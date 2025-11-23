@@ -4,7 +4,7 @@ import emailjs from 'emailjs-com';
 @Injectable({
   providedIn: 'root',
 })
-export class Contact {
+export class ContactService {
   // Get these from EmailJS dashboard (https://www.emailjs.com/)
   private serviceID = 'YOUR_SERVICE_ID'; // Replace with your EmailJS service ID
   private templateID = 'YOUR_TEMPLATE_ID'; // Replace with your EmailJS template ID
