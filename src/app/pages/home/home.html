@@ -1,44 +1,80 @@
 <div class="home-container" *ngIf="personalInfo">
-  <div class="hero-section">
-    <div class="hero-content">
-      <div class="profile-image-container">
-        <img
-          [src]="personalInfo.profileImage"
-          [alt]="personalInfo.name"
-          class="profile-image"
-          onerror="this.src='assets/images/default-profile.jpg'"
-        />
+  <!-- Animated Background Elements -->
+  <div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="floating-particle" *ngFor="let particle of particles"></div>
+  </div>
+
+  <!-- Main Hero Section -->
+  <div class="hero-wrapper">
+    <!-- Left Content Section -->
+    <div class="hero-left">
+      <div class="greeting-badge">
+        <span class="wave">👋</span>
+        <span>Hello, I'm</span>
       </div>
 
-      <h1 class="name-title">{{ personalInfo.name }}</h1>
-      <h2 class="role-title">{{ personalInfo.title }}</h2>
+      <h1 class="name-title">
+        <span class="full-name">{{ getFullName() }}</span>
+      </h1>
+
+      <h2 class="role-title">
+        <span class="role-wrapper">
+          <span class="typing-text">{{ typedText }}</span>
+          <span class="cursor">|</span>
+        </span>
+      </h2>
 
       <p class="summary">{{ personalInfo.summary }}</p>
 
-      <div class="contact-info">
-        <div class="info-item">
+      <!-- Quick Contact Pills -->
+      <div class="contact-pills">
+        <a [href]="'mailto:' + personalInfo.email" class="contact-pill">
           <mat-icon>email</mat-icon>
-          <span>{{ personalInfo.email }}</span>
-        </div>
-        <div class="info-item">
+          <span>Email</span>
+        </a>
+        <a [href]="'tel:' + personalInfo.phone" class="contact-pill">
           <mat-icon>phone</mat-icon>
-          <span>{{ personalInfo.phone }}</span>
-        </div>
-        <div class="info-item">
+          <span>Call</span>
+        </a>
+        <div class="contact-pill location-pill">
           <mat-icon>location_on</mat-icon>
           <span>{{ personalInfo.location }}</span>
         </div>
       </div>
 
+      <!-- Action Buttons -->
       <div class="action-buttons">
-        <a mat-raised-button color="primary" routerLink="/contact">
-          <mat-icon>mail</mat-icon>
-          Get in Touch
+        <a mat-raised-button class="btn-primary" routerLink="/contact">
+          <span>Get in Touch</span>
+          <mat-icon>arrow_forward</mat-icon>
         </a>
-        <a mat-stroked-button color="primary" routerLink="/projects">
-          <mat-icon>work</mat-icon>
-          View Projects
+        <a mat-stroked-button class="btn-secondary" routerLink="/projects">
+          <span>View Projects</span>
+          <mat-icon>arrow_outward</mat-icon>
         </a>
+      </div>
+    </div>
+
+    <!-- Right Image Section -->
+    <div class="hero-right">
+      <div class="profile-card">
+        <div class="profile-image-container">
+          <div class="image-glow"></div>
+          <div class="image-border"></div>
+          <img
+            [src]="personalInfo.profileImage"
+            [alt]="personalInfo.name"
+            class="profile-image"
+            onerror="this.src='assets/images/default-profile.jpg'"
+          />
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Available for work</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

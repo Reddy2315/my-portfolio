@@ -10,86 +10,249 @@ html {
     density: 0,
   ));
 
-  /* Smooth scroll behavior provided in your global CSS */
   scroll-behavior: smooth;
 }
 
-/* Global SCSS Styles (merged) */
+/* Global Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Use Material surface variable with a sensible fallback */
-  background-color: var(--mat-sys-surface, #f5f5f5);
-}
-
-/* Body: keep Material system variables but include your font stack and smoothing */
+html,
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
+  height: 100%;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  background-color: var(--mat-sys-surface, #f5f5f5);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Respect Material color tokens but fallback as above */
-  color-scheme: light;
   color: var(--mat-sys-on-surface, #111827);
-  font: var(--mat-sys-body-medium, 16px/1.5 sans-serif);
+  overflow-x: hidden;
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
+body {
+  margin: 0;
+  color-scheme: light;
+  font: var(--mat-sys-body-medium, 16px/1.6 sans-serif);
 }
+
+/* Enhanced Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 10px;
+}
+
 ::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1 0%, #e8e8e8 100%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+}
+
+::-webkit-scrollbar-corner {
   background: #f1f1f1;
 }
-::-webkit-scrollbar-thumb {
-  background: #667eea;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #764ba2;
-}
 
-/* Animation */
+/* Smooth Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes slideUp {
-  from { transform: translateY(30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* Material overrides */
-.mat-mdc-card {
-  border-radius: 12px !important;
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Material Design Overrides */
+.mat-mdc-card {
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
 .mat-mdc-button,
-.mat-mdc-raised-button {
+.mat-mdc-raised-button,
+.mat-mdc-stroked-button {
   text-transform: none !important;
   font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3px !important;
+  border-radius: 12px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Selection styling */
+.mat-mdc-raised-button.mat-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3) !important;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+  box-shadow: 0 8px 28px rgba(102, 126, 234, 0.4) !important;
+  transform: translateY(-2px);
+}
+
+.mat-mdc-form-field {
+  .mdc-text-field--filled {
+    border-radius: 12px 12px 0 0 !important;
+  }
+
+  .mdc-text-field--outlined {
+    .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-width: 2px !important;
+        border-radius: 12px !important;
+      }
+    }
+  }
+}
+
+/* Enhanced Selection Styling */
 ::selection {
-  background-color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-}
-::-moz-selection {
-  background-color: #667eea;
-  color: white;
+  text-shadow: none;
 }
 
-/* Link styling */
+::-moz-selection {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-shadow: none;
+}
+
+/* Link Styling */
 a {
   text-decoration: none;
-  transition: all 0.3s ease;
+  color: #667eea;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+a:hover {
+  color: #764ba2;
+}
+
+/* Focus Styles for Accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(102, 126, 234, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading Spinner (Optional) */
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(102, 126, 234, 0.2);
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility Classes */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-smooth {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-strong {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* Accessibility: Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

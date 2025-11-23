@@ -33,7 +33,9 @@ export class Contact {
     phone: '+91 9347548348',
     location: 'Bangalore, India',
     linkedin: 'https://www.linkedin.com/in/nagendharreddy-kondapu-368699225',
-    github: 'https://github.com/Reddy2315'
+    github: 'https://github.com/Reddy2315',
+    instagram: 'https://instagram.com/yourusername', 
+    facebook: 'https://facebook.com/yourusername'
   };
 
   constructor(
