@@ -1,217 +1,368 @@
-@use "sass:color";
-/* Theme colors */
-$bg-start: #f7fbff;
-$bg-end:   #eef4fb;
-$card-bg:  #ffffff;
-$primary:  #5b6cff;
-$accent:   #48c6a9;
-$text:     #0f1724;
-$muted:    #6b7280;
-$shadow:   0 10px 30px rgba(15, 23, 42, 0.06);
-
-:host {
-  display: block;
-  font-family: "Inter", "Roboto", Arial, sans-serif;
-  color: $text;
-}
-
-/* Container */
 .skills-container {
   min-height: calc(100vh - 64px);
-  padding: 56px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-font-smoothing: antialiased;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 200% 200%;
+  animation: gradient-flow 15s ease infinite;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  color: #0f1724;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Header */
+.skills-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 25% 35%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 75% 65%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+@keyframes gradient-flow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 .skills-header {
   max-width: 1200px;
-  margin: 0 auto 40px;
+  margin: 0 auto 60px;
   text-align: center;
-
-  h1 {
-    margin: 0 0 8px;
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: color.adjust($text, $lightness: -6%);
-    letter-spacing: -0.02em;
-  }
-
-  p {
-    margin: 0;
-    color: $muted;
-    font-size: 1rem;
-  }
+  position: relative;
+  z-index: 1;
+  animation: fadeInDown 0.8s ease;
 }
 
-/* Grid */
+.skills-header h1 {
+  margin: 0 0 16px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -1px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skills-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
 .skills-grid {
   max-width: 1200px;
-  margin: 28px auto;
+  margin: 0 auto 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
   align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
-/* Category card */
 .skill-category-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), $card-bg);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
   overflow: hidden;
-  box-shadow: $shadow;
-  border: 1px solid rgba(15,23,42,0.04);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+              0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: scaleIn 0.6s ease both;
+}
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(15,23,42,0.09);
+.skill-category-card:nth-child(1) { animation-delay: 0.1s; }
+.skill-category-card:nth-child(2) { animation-delay: 0.2s; }
+.skill-category-card:nth-child(3) { animation-delay: 0.3s; }
+.skill-category-card:nth-child(4) { animation-delay: 0.4s; }
+.skill-category-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
   }
-
-  mat-card-header {
-    padding: 18px 20px;
-    background: linear-gradient(90deg, rgba($primary, 0.12), rgba($accent, 0.08));
-  }
-
-  mat-card-title {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: $text;
-  }
-
-  mat-card-content {
-    padding: 18px 20px 22px;
-
-    .skill-item {
-      margin-bottom: 16px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
-      align-items: center;
-
-      .skill-name {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        font-size: 0.95rem;
-        color: color.adjust($text, $lightness: -6%);
-
-        span:first-child {
-          font-weight: 600;
-        }
-
-        .skill-level {
-          font-weight: 700;
-          color: $primary;
-          font-size: 0.9rem;
-          min-width: 48px;
-          text-align: right;
-        }
-      }
-
-      .skill-bar {
-        grid-column: 1 / -1;
-        width: 100%;
-        height: 10px;
-        border-radius: 999px;
-        background: rgba(0,0,0,0.04);
-        overflow: hidden;
-      }
-
-      /* support mat progress variants */
-      ::ng-deep .mat-progress-bar,
-      ::ng-deep .mat-mdc-progress-bar,
-      ::ng-deep .mat-mdc-linear-progress {
-        height: 10px !important;
-        border-radius: 999px;
-      }
-
-      /* MDC fill styling */
-      ::ng-deep .mat-mdc-progress-bar .mat-mdc-linear-progress-bar,
-      ::ng-deep .mat-mdc-linear-progress .mat-mdc-linear-progress-value {
-        border-radius: 999px;
-        transition: width 420ms cubic-bezier(.2,.8,.2,1);
-        background: linear-gradient(90deg, $primary 0%, $accent 100%) !important;
-      }
-
-      /* legacy mat-progress-bar */
-      ::ng-deep .mat-progress-bar .mat-progress-bar-fill::after {
-        background: linear-gradient(90deg, $primary 0%, $accent 100%) !important;
-      }
-    }
-
-    .skill-item:last-child {
-      margin-bottom: 0;
-    }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-/* Summary */
+.skill-category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3),
+              0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-header {
+  padding: 28px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+mat-card-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+mat-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 0.3px;
+}
+
+mat-card-content {
+  padding: 32px;
+}
+
+.skill-item {
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.skill-item:last-child {
+  margin-bottom: 0;
+}
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 1rem;
+  color: #1a202c;
+}
+
+.skill-name span:first-child {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.skill-level {
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.05rem;
+  min-width: 52px;
+  text-align: right;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.2) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.2) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+::ng-deep .mat-mdc-progress-bar,
+::ng-deep .mat-mdc-linear-progress {
+  height: 12px !important;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__bar-inner,
+::ng-deep .mat-mdc-linear-progress .mdc-linear-progress__bar-inner {
+  border-radius: 999px;
+  border-top: none !important;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+  background-size: 200% 100% !important;
+  animation: gradient-shift 3s ease infinite !important;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+::ng-deep .mat-mdc-progress-bar .mdc-linear-progress__buffer,
+::ng-deep .mat-mdc-linear-progress .mdc-linear-progress__buffer {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
 .summary-section {
   max-width: 1200px;
-  margin: 36px auto 0;
+  margin: 0 auto;
   text-align: center;
-
-  h2 {
-    margin: 0 0 20px;
-    font-size: 1.6rem;
-    color: color.adjust($text, $lightness: -6%);
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
-  }
-
-  .stat-card {
-    background: $card-bg;
-    border-radius: 12px;
-    padding: 22px;
-    box-shadow: $shadow;
-    border: 1px solid rgba(15,23,42,0.04);
-    transition: transform 180ms ease;
-
-    &:hover {
-      transform: translateY(-6px);
-    }
-
-    .stat-number {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, $primary 0%, $accent 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      color: $muted;
-      font-weight: 600;
-    }
-  }
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease 0.6s both;
 }
 
-/* Responsive tweaks */
+.summary-section h2 {
+  margin: 0 0 40px;
+  font-size: 2.2rem;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+              0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3),
+              0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradient-shift 3s ease infinite;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.3px;
+}
+
 @media (max-width: 900px) {
   .skills-header h1 {
-    font-size: 1.9rem;
+    font-size: 2.2rem;
   }
 
   .skill-category-card {
-    mat-card-content { padding: 14px; }
+    mat-card-content {
+      padding: 24px;
+    }
+  }
+
+  .summary-section h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-container {
+    padding: 60px 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .skills-container { padding: 36px 14px; }
+  .skills-header h1 {
+    font-size: 1.8rem;
+  }
 
-  .skills-header h1 { font-size: 1.6rem; }
-  .stat-card { padding: 18px; }
-  .skill-item .skill-name { font-size: 0.92rem; }
+  .stat-card {
+    padding: 28px 20px;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .skill-item .skill-name {
+    font-size: 0.95rem;
+  }
 }
 
-/* Small accessibility improvements */
-a { color: $primary; }
-button { cursor: pointer; }
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
