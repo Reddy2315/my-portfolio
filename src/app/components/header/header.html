@@ -1,0 +1,30 @@
+<mat-toolbar [class.scrolled]="isScrolled" class="header">
+  <div class="header-container">
+    <a routerLink="/home" class="logo">
+      <span class="logo-text">Portfolio</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+      <a mat-button routerLink="/resume" routerLinkActive="active">Resume</a>
+      <a mat-button routerLink="/projects" routerLinkActive="active"
+        >Projects</a
+      >
+      <a mat-button routerLink="/skills" routerLinkActive="active">Skills</a>
+      <a mat-button routerLink="/contact" routerLinkActive="active">Contact</a>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <button mat-icon-button class="mobile-menu" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/home">Home</a>
+      <a mat-menu-item routerLink="/resume">Resume</a>
+      <a mat-menu-item routerLink="/projects">Projects</a>
+      <a mat-menu-item routerLink="/skills">Skills</a>
+      <a mat-menu-item routerLink="/contact">Contact</a>
+    </mat-menu>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,125 @@
+{
+  "personal": {
+    "name": "Your Name",
+    "title": "Full Stack Developer | Java & Angular Specialist",
+    "email": "your.email@example.com",
+    "phone": "+91 XXXXX XXXXX",
+    "location": "Bangalore, India",
+    "linkedin": "https://linkedin.com/in/yourprofile",
+    "github": "https://github.com/yourusername",
+    "summary": "M.Tech graduate in Electrical and Electronics Engineering with strong expertise in Java, Angular, DSA, and full-stack development. Passionate about building scalable applications and solving complex problems.",
+    "profileImage": "assets/images/profile.jpg"
+  },
+  "experience": [
+    {
+      "id": 1,
+      "company": "Your Company",
+      "position": "Software Developer",
+      "duration": "Jan 2024 - Present",
+      "location": "Bangalore, India",
+      "responsibilities": [
+        "Developed full-stack applications using Angular and Spring Boot",
+        "Implemented RESTful APIs and microservices architecture",
+        "Optimized application performance reducing load time by 40%",
+        "Collaborated with cross-functional teams in Agile environment"
+      ],
+      "technologies": ["Angular", "Java", "Spring Boot", "MySQL", "Git"]
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "M.Tech in Electrical and Electronics Engineering",
+      "institution": "Your University",
+      "duration": "2021 - 2023",
+      "grade": "8.5 CGPA",
+      "achievements": [
+        "Specialized in embedded systems and IoT",
+        "Published research paper on renewable energy systems"
+      ]
+    },
+    {
+      "id": 2,
+      "degree": "B.Tech in Electrical and Electronics Engineering",
+      "institution": "Your College",
+      "duration": "2017 - 2021",
+      "grade": "8.0 CGPA"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "ATS-Friendly Resume Builder",
+      "description": "Real-time resume builder with ATS compatibility checker, PDF export, and format validation",
+      "technologies": ["Angular", "Spring Boot", "H2 Database", "PDF.js"],
+      "imageUrl": "assets/images/projects/resume-builder.jpg",
+      "githubUrl": "https://github.com/yourusername/resume-builder",
+      "liveUrl": "https://your-resume-app.netlify.app",
+      "highlights": [
+        "Built ATS-match scoring algorithm",
+        "Implemented real-time validation",
+        "Integrated PDF export functionality"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "E-Commerce Platform",
+      "description": "Full-featured online shopping platform with payment integration",
+      "technologies": ["Angular", "Java", "Spring Boot", "PostgreSQL", "Stripe"],
+      "imageUrl": "assets/images/projects/ecommerce.jpg",
+      "githubUrl": "https://github.com/yourusername/ecommerce",
+      "highlights": [
+        "Implemented secure payment gateway",
+        "Built inventory management system",
+        "Created responsive UI with Material Design"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": [
+        { "name": "Java", "level": 90 },
+        { "name": "JavaScript/TypeScript", "level": 85 },
+        { "name": "Python", "level": 70 },
+        { "name": "SQL", "level": 80 }
+      ]
+    },
+    {
+      "category": "Frontend Development",
+      "items": [
+        { "name": "Angular", "level": 85 },
+        { "name": "HTML5/CSS3", "level": 90 },
+        { "name": "Material Design", "level": 80 },
+        { "name": "Responsive Design", "level": 85 }
+      ]
+    },
+    {
+      "category": "Backend Development",
+      "items": [
+        { "name": "Spring Boot", "level": 85 },
+        { "name": "RESTful APIs", "level": 90 },
+        { "name": "Microservices", "level": 75 },
+        { "name": "JPA/Hibernate", "level": 80 }
+      ]
+    },
+    {
+      "category": "Database & Tools",
+      "items": [
+        { "name": "MySQL/PostgreSQL", "level": 80 },
+        { "name": "MongoDB", "level": 70 },
+        { "name": "Git/GitHub", "level": 85 },
+        { "name": "Docker", "level": 65 }
+      ]
+    },
+    {
+      "category": "Data Structures & Algorithms",
+      "items": [
+        { "name": "Arrays & Strings", "level": 90 },
+        { "name": "Trees & Graphs", "level": 85 },
+        { "name": "Dynamic Programming", "level": 80 },
+        { "name": "System Design", "level": 75 }
+      ]
+    }
+  ]
+}
