@@ -1,1 +1,42 @@
-<p>skills works!</p>
+<div class="skills-container">
+  <div class="skills-header">
+    <h1>Skills &amp; Expertise</h1>
+    <p>Technical proficiencies and areas of expertise</p>
+  </div>
+
+  <div class="skills-grid">
+    <mat-card class="skill-category-card" *ngFor="let skillCategory of skills">
+      <mat-card-header>
+        <mat-card-title>{{ skillCategory.category }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="skill-item" *ngFor="let skill of skillCategory.items">
+          <div class="skill-name">
+            <span>{{ skill.name }}</span>
+            <span class="skill-level">{{ skill.level }}%</span>
+          </div>
+          <mat-progress-bar mode="determinate" [value]="skill.level" class="skill-bar"></mat-progress-bar>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="summary-section">
+    <h2>Summary Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">{{ getTotalSkills() }}</div>
+        <div class="stat-label">Total Skills</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getSkillCategories() }}</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">{{ getAverageLevel() }}%</div>
+        <div class="stat-label">Average Level</div>
+      </div>
+    </div>
+  </div>
+</div>
