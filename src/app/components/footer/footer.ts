@@ -11,4 +11,10 @@ import { RouterModule } from '@angular/router';
 })
 export class Footer {
 
+    contactInfo = {
+      linkedin: 'https://www.linkedin.com/in/nagendharreddy-kondapu-368699225',
+      github: 'https://github.com/Reddy2315',
+      instagram: 'https://instagram.com/yourusername', 
+      facebook: 'https://facebook.com/yourusername'
+    };
 }

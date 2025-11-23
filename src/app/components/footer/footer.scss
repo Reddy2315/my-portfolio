@@ -234,13 +234,12 @@
   color: #667eea;
 }
 
-.footer-bottom::before {
-  content: '✨';
-  display: block;
-  font-size: 24px;
-  margin-bottom: 12px;
-  animation: sparkle 2s ease-in-out infinite;
-}
+// .footer-bottom::before {
+//   display: block;
+//   font-size: 24px;
+//   margin-bottom: 12px;
+//   animation: sparkle 2s ease-in-out infinite;
+// }
 
 @keyframes sparkle {
   0%, 100% {

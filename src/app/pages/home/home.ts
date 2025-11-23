@@ -14,12 +14,14 @@ import { Data } from '../../services/data';
     RouterModule,
     MatButtonModule,
     MatIconModule,
-    MatCardModule],
+    MatCardModule
+  ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home implements OnInit {
-   personalInfo: PersonalInfo | null = null;
+  personalInfo: PersonalInfo | null = null;
+  particles: number[] = Array(20).fill(0); // For floating particles
 
   constructor(private dataService: Data) {}
 
@@ -29,5 +31,16 @@ export class Home implements OnInit {
         this.personalInfo = data.personal;
       }
     });
+  }
+
+  getFirstName(): string {
+    if (!this.personalInfo?.name) return '';
+    return this.personalInfo.name.split(' ')[0];
+  }
+
+  getLastName(): string {
+    if (!this.personalInfo?.name) return '';
+    const parts = this.personalInfo.name.split(' ');
+    return parts.slice(1).join(' ');
   }
 }
