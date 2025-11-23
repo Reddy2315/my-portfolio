@@ -1,0 +1,203 @@
+$primary: #1e88e5;
+$accent: #00bfa5;
+$muted: #6b7280;
+$card-bg: #ffffff;
+$shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+
+.resume-container {
+  max-width: 1100px;
+  margin: 48px auto;
+  padding: 24px;
+  display: block;
+  font-family: "Inter", "Roboto", Arial, sans-serif;
+  color: #0f172a;
+}
+
+/* Header row */
+.header-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+
+  h1 {
+    font-size: 1.9rem;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #0b2545;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(30, 136, 229, 0.14);
+    background: linear-gradient(180deg, rgba(30,136,229,0.12), rgba(30,136,229,0.04));
+    transition: transform 160ms ease, box-shadow 160ms ease;
+    color: $primary;
+
+    mat-icon {
+      font-size: 18px;
+      color: $primary;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(30,136,229,0.12);
+      text-decoration: none;
+    }
+  }
+}
+
+/* Section titles */
+.section {
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    margin: 8px 0 14px;
+    color: #07203a;
+
+    mat-icon {
+      color: $primary;
+      background: rgba($primary, 0.08);
+      border-radius: 6px;
+      padding: 6px;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+/* Card styling */
+mat-card {
+  background: $card-bg;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  padding: 14px;
+  box-shadow: $shadow;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.04);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+  }
+
+  mat-card-header {
+    padding: 0 0 8px 0;
+    display: flex;
+    flex-direction: column;
+
+    mat-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #06213a;
+      margin-bottom: 4px;
+    }
+
+    mat-card-subtitle {
+      color: $muted;
+      font-size: 0.92rem;
+    }
+  }
+
+  mat-card-content {
+    padding-top: 8px;
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: $muted;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+
+      .icon {
+        font-size: 18px;
+        color: $primary;
+        opacity: 0.95;
+      }
+    }
+
+    h4 {
+      margin: 8px 0 6px;
+      font-size: 0.98rem;
+      color: #0b2545;
+    }
+
+    p {
+      margin: 6px 0 12px;
+      color: #1f2937;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 6px 0 12px;
+      padding-left: 18px;
+      color: #0f172a;
+      li {
+        margin-bottom: 6px;
+        line-height: 1.45;
+        &::marker {
+          color: $accent;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+/* Divider spacing */
+.section-divider {
+  margin: 18px 0;
+  opacity: 0.06;
+}
+
+/* Responsive layout */
+@media (min-width: 900px) {
+  .resume-container {
+    padding: 32px;
+  }
+
+  /* show two-column layout for long lists */
+  .section {
+    mat-card {
+      display: block;
+    }
+  }
+
+  /* Make cards a little wider and consistent */
+  mat-card.exp-card,
+  mat-card.edu-card {
+    padding: 18px;
+  }
+}
+
+/* Small screens */
+@media (max-width: 599px) {
+  .header-row {
+    flex-direction: column;
+    align-items: stretch;
+
+    h1 {
+      text-align: left;
+      font-size: 1.5rem;
+    }
+
+    .download-btn {
+      justify-self: end;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
