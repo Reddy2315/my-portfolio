@@ -1,1 +1,79 @@
-<p>resume works!</p>
+<div class="resume-container">
+  <div class="header-row">
+    <h1>Professional Resume</h1>
+    <a class="download-btn" mat-raised-button color="primary" href="assets/resume.pdf" target="_blank" rel="noopener" download>
+      <mat-icon>download</mat-icon>
+      Download Resume (PDF)
+    </a>
+  </div>
+
+  <section class="section">
+    <h2><mat-icon>work</mat-icon> Work Experience</h2>
+
+    <ng-container *ngIf="experience.length; else noExperience">
+      <mat-card *ngFor="let exp of experience" class="exp-card">
+        <mat-card-header>
+          <mat-card-title>{{ exp.position }}</mat-card-title>
+          <mat-card-subtitle>{{ exp.company }} • {{ exp.location }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="meta">
+            <mat-icon class="icon">access_time</mat-icon>
+            <span>{{ exp.duration }}</span>
+          </div>
+
+          <h4>Key Responsibilities</h4>
+          <ul>
+            <li *ngFor="let resp of exp.responsibilities">{{ resp }}</li>
+          </ul>
+
+          <h4>Technologies Used</h4>
+          <p>{{ exp.technologies.join(', ') }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #noExperience>
+      <p>No work experience available.</p>
+    </ng-template>
+  </section>
+
+  <mat-divider class="section-divider"></mat-divider>
+
+  <section class="section">
+    <h2><mat-icon>school</mat-icon> Education</h2>
+
+    <ng-container *ngIf="education.length; else noEducation">
+      <mat-card *ngFor="let edu of education" class="edu-card">
+        <mat-card-header>
+          <mat-card-title>{{ edu.degree }}</mat-card-title>
+          <mat-card-subtitle>{{ edu.institution }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="meta">
+            <mat-icon class="icon">calendar_today</mat-icon>
+            <span>{{ edu.duration }}</span>
+          </div>
+
+          <div class="meta" *ngIf="edu.grade">
+            <mat-icon class="icon">grade</mat-icon>
+            <span>Grade: {{ edu.grade }}</span>
+          </div>
+
+          <div *ngIf="edu.achievements?.length">
+            <h4>Achievements</h4>
+            <ul>
+              <li *ngFor="let achievement of edu.achievements">{{ achievement }}</li>
+            </ul>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #noEducation>
+      <p>No education data available.</p>
+    </ng-template>
+  </section>
+</div>
