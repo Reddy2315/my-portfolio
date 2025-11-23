@@ -1,1 +1,55 @@
-<p>projects works!</p>
+<div class="projects-container">
+  <div class="projects-header">
+    <h1>My Projects</h1>
+    <p>Showcase of recent work and side projects</p>
+  </div>
+
+  <div class="projects-grid" *ngIf="projects.length; else noProjects">
+    <mat-card class="project-card" *ngFor="let project of projects">
+      <div class="project-image">
+        <img
+          [src]="project.imageUrl"
+          [alt]="project.title"
+          (error)="$event.target.src='assets/images/project-placeholder.png'"
+        />
+        <div class="project-overlay">
+          <div class="overlay-buttons">
+            <a *ngIf="project.liveUrl" mat-raised-button color="primary" [href]="project.liveUrl" target="_blank" rel="noopener">
+              <mat-icon>launch</mat-icon>
+              Live Demo
+            </a>
+            <a *ngIf="project.githubUrl" mat-stroked-button color="primary" [href]="project.githubUrl" target="_blank" rel="noopener">
+              <mat-icon>code</mat-icon>
+              Source Code
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <mat-card-header>
+        <mat-card-title>{{ project.title }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p class="project-description">{{ project.description }}</p>
+
+        <h4 class="section-title">Technologies</h4>
+        <mat-chip-set aria-label="Technologies">
+          <mat-chip *ngFor="let tech of project.technologies">{{ tech }}</mat-chip>
+        </mat-chip-set>
+
+        <h4 class="section-title">Key Highlights</h4>
+        <ul class="highlights">
+          <li *ngFor="let highlight of project.highlights">{{ highlight }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <ng-template #noProjects>
+    <div class="no-projects">
+      <mat-icon>folder_open</mat-icon>
+      <p>No projects to display. Update <code>assets/data/portfolio-data.json</code> to add your projects.</p>
+    </div>
+  </ng-template>
+</div>
