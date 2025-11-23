@@ -3,7 +3,7 @@ import { Home } from './pages/home/home';
 import { Projects } from './pages/projects/projects';
 import { Resume } from './pages/resume/resume';
 import { Skills } from './pages/skills/skills';
-import { Contact } from './services/contact';
+import { Contact } from './pages/contact/contact';
 
 
 export const routes: Routes = [
