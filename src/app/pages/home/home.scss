@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-  padding: 100px 20px 60px;
+  padding: 100px;
   position: relative;
   overflow: hidden;
 }
@@ -163,7 +163,7 @@
   padding: 10px 20px;
   border-radius: 50px;
   color: white;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 24px;
   animation: fadeIn 1s ease 0.3s both;
@@ -258,7 +258,7 @@
 
 .cursor {
   color: #667eea;
-  font-weight: 300;
+  font-weight: 600;
   animation: blink 1s step-end infinite;
   display: inline-block;
   // margin-left: 1px;
