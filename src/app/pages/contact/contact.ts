@@ -30,10 +30,10 @@ export class Contact {
   isSubmitting = false;
   contactInfo = {
     email: 'your.email@example.com',
-    phone: '+91 XXXXX XXXXX',
+    phone: '+91 9347548348',
     location: 'Bangalore, India',
-    linkedin: 'https://linkedin.com/in/yourprofile',
-    github: 'https://github.com/yourusername'
+    linkedin: 'https://www.linkedin.com/in/nagendharreddy-kondapu-368699225',
+    github: 'https://github.com/Reddy2315'
   };
 
   constructor(
