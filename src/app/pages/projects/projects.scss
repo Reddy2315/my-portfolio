@@ -1,103 +1,396 @@
+// ============================================
+// PROJECTS CONTAINER - Enhanced with Modern Effects
+// ============================================
+
 .projects-container {
   min-height: calc(100vh - 64px);
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  background-size: 200% 200%;
-  animation: gradient-flow 15s ease infinite;
-  padding: 80px 20px;
+  background-size: 400% 400%;
+  animation: gradient-flow 20s ease infinite;
+  padding: 100px 24px 80px;
   position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 80px 20px 60px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 60px 16px 48px;
+  }
+
+  // Animated mesh gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: mesh-float 15s ease-in-out infinite;
+  }
+
+  // Floating particles background
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 60% 70%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 50% 50%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 80% 10%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 90% 60%, rgba(255, 255, 255, 0.3), transparent);
+    background-size: 200px 200px, 300px 300px, 250px 250px, 280px 280px, 220px 220px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 50px;
+    animation: particles-float 30s linear infinite;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 @keyframes gradient-flow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 25%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 75%;
+  }
 }
+
+@keyframes mesh-float {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes particles-float {
+  0% {
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px, 150px 50px;
+  }
+
+  100% {
+    background-position: 200px 200px, 240px 260px, 330px 470px, 270px 300px, 350px 250px;
+  }
+}
+
+// ============================================
+// HEADER SECTION - Premium Design
+// ============================================
 
 .projects-header {
   max-width: 1200px;
-  margin: 0 auto 60px;
+  margin: 0 auto 70px;
   text-align: center;
-  animation: fadeInDown 0.8s ease;
+  animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 40px;
+  }
 }
 
 .projects-header h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   color: white;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   font-weight: 800;
-  letter-spacing: -1px;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  text-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 60px rgba(255, 255, 255, 0.1);
+  line-height: 1.1;
+  position: relative;
+  display: inline-block;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    letter-spacing: -1px;
+  }
+
+  // Glowing underline effect
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: glow-pulse 2s ease-in-out infinite;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 3px;
+      bottom: -6px;
+    }
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+  }
 }
 
 .projects-header p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: rgba(255, 255, 255, 0.95);
   font-weight: 300;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// PROJECTS GRID - Enhanced Layout
+// ============================================
 
 .projects-grid {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 48px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 28px;
+  }
 }
+
+// ============================================
+// PROJECT CARDS - Premium 3D Effect
+// ============================================
 
 .project-card {
   background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
+  backdrop-filter: blur(30px) saturate(180%);
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
-              0 8px 24px rgba(0, 0, 0, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.3),
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  animation: scaleIn 0.6s ease both;
-}
+  animation: scaleIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 
-.project-card:nth-child(1) { animation-delay: 0.1s; }
-.project-card:nth-child(2) { animation-delay: 0.2s; }
-.project-card:nth-child(3) { animation-delay: 0.3s; }
-.project-card:nth-child(4) { animation-delay: 0.4s; }
-.project-card:nth-child(5) { animation-delay: 0.5s; }
-.project-card:nth-child(6) { animation-delay: 0.6s; }
+  @media (max-width: 768px) {
+    border-radius: 24px;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 20px;
+  }
+
+  // Staggered animation delays
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.15}s;
+    }
+  }
+
+  // Gradient border shine
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 28px;
+    padding: 2px;
+    background: linear-gradient(135deg,
+        rgba(102, 126, 234, 0.5) 0%,
+        rgba(118, 75, 162, 0.5) 50%,
+        rgba(240, 147, 251, 0.5) 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-16px) rotateX(2deg) scale(1.02);
+    box-shadow:
+      0 35px 90px rgba(0, 0, 0, 0.35),
+      0 15px 40px rgba(0, 0, 0, 0.25),
+      0 0 60px rgba(102, 126, 234, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+
+    @media (max-width: 768px) {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.3),
+        0 12px 35px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 480px) {
+      transform: translateY(-8px) scale(1.01);
+    }
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
 
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.85) translateY(40px);
   }
+
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 
-.project-card:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3),
-              0 12px 32px rgba(0, 0, 0, 0.2);
-}
+// ============================================
+// PROJECT IMAGE - Enhanced Overlay
+// ============================================
 
 .project-image {
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 260px;
   overflow: hidden;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-}
+  background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
 
-.project-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  @media (max-width: 768px) {
+    height: 220px;
+  }
+
+  @media (max-width: 480px) {
+    height: 200px;
+  }
+
+  // Subtle pattern overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 255, 255, 0.05) 10px,
+        rgba(255, 255, 255, 0.05) 20px);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.95) contrast(1.05);
+  }
 }
 
 .project-card:hover .project-image img {
-  transform: scale(1.15);
+  transform: scale(1.2) rotate(2deg);
+  filter: brightness(1) contrast(1.1);
 }
 
 .project-overlay {
@@ -106,16 +399,39 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+  background: linear-gradient(135deg,
+      rgba(102, 126, 234, 0.97) 0%,
+      rgba(118, 75, 162, 0.97) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+  backdrop-filter: blur(5px);
+
+  // Animated gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent);
+    transition: left 0.7s ease;
+  }
 }
 
 .project-card:hover .project-overlay {
   opacity: 1;
+
+  &::before {
+    left: 100%;
+  }
 }
 
 .overlay-buttons {
@@ -123,175 +439,452 @@
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
+  position: relative;
+  z-index: 3;
+
+  @media (max-width: 480px) {
+    gap: 12px;
+    padding: 20px;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(30px);
+    opacity: 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    letter-spacing: 0.3px;
+
+    @media (max-width: 480px) {
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      gap: 8px;
+    }
+
+    mat-icon {
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: translateY(-6px) scale(1.05);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+
+      @media (max-width: 768px) {
+        transform: translateY(-4px) scale(1.03);
+      }
+
+      mat-icon {
+        transform: scale(1.2);
+      }
+    }
+
+    &:active {
+      transform: translateY(-2px) scale(1);
+    }
+  }
 }
 
-.overlay-buttons a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  transform: translateY(20px);
-  opacity: 0;
-  animation: slideUp 0.4s ease 0.1s forwards;
+.project-card:hover .overlay-buttons a {
+  animation: slideUpFade 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+
+  &:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
 }
 
-.project-card:hover .overlay-buttons a:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.project-card:hover .overlay-buttons a:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-@keyframes slideUp {
+@keyframes slideUpFade {
   to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
-.overlay-buttons a:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
+// ============================================
+// CARD HEADER - Enhanced Typography
+// ============================================
 
 mat-card-header {
-  padding: 24px 28px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.06);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 1) 100%);
+  padding: 28px 32px 24px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.08);
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(248, 250, 252, 1) 100%);
+  position: relative;
+
+  @media (max-width: 768px) {
+    padding: 24px 28px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 24px 16px;
+  }
+
+  // Accent line
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    border-radius: 0 0 4px 0;
+  }
 }
 
 mat-card-title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #1a202c;
   margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.2px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 }
 
+.project-card:hover mat-card-title {
+  color: #667eea;
+}
+
+// ============================================
+// CARD CONTENT - Refined Layout
+// ============================================
+
 mat-card-content {
-  padding: 28px;
+  padding: 32px;
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 24px;
+
+  @media (max-width: 768px) {
+    padding: 28px;
+    gap: 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 24px;
+    gap: 18px;
+  }
 }
 
 .project-description {
   color: #4a5568;
   line-height: 1.8;
-  margin: 0 0 20px;
-  font-size: 1rem;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.95rem;
+  }
 }
 
 .section-title {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.9rem;
+  font-weight: 800;
   color: #1a202c;
-  margin: 20px 0 12px;
-  letter-spacing: 0.3px;
+  margin: 0 0 14px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    margin: 0 0 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg,
+        rgba(102, 126, 234, 0.3),
+        transparent);
+    margin-left: 12px;
+  }
 }
 
+// ============================================
+// TECHNOLOGY CHIPS - Modern Design
+// ============================================
+
 mat-chip-set {
-  margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    gap: 8px;
+  }
 }
 
 ::ng-deep mat-chip {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: white !important;
-  font-weight: 600 !important;
-  padding: 8px 16px !important;
-  border-radius: 20px !important;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-  transition: all 0.3s ease !important;
+  font-weight: 700 !important;
+  padding: 10px 18px !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 4px 14px rgba(102, 126, 234, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  font-size: 0.85rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+
+  @media (max-width: 480px) {
+    padding: 8px 16px !important;
+    font-size: 0.8rem !important;
+  }
+
+  &:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+      0 8px 20px rgba(102, 126, 234, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+
+    @media (max-width: 768px) {
+      transform: translateY(-2px) scale(1.03);
+    }
+  }
 }
 
-::ng-deep mat-chip:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
-}
+// ============================================
+// HIGHLIGHTS LIST - Premium Style
+// ============================================
 
 .highlights {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
+
+  li {
+    padding: 12px 16px 12px 40px;
+    position: relative;
+    color: #2d3748;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(102, 126, 234, 0.03);
+    border-radius: 10px;
+    border-left: 3px solid transparent;
+
+    @media (max-width: 768px) {
+      padding: 10px 14px 10px 36px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 10px 12px 10px 32px;
+      font-size: 0.9rem;
+    }
+
+    &::before {
+      content: '✨';
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      font-size: 18px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: grayscale(0.3);
+
+      @media (max-width: 768px) {
+        left: 10px;
+        top: 10px;
+        font-size: 16px;
+      }
+
+      @media (max-width: 480px) {
+        left: 8px;
+        font-size: 14px;
+      }
+    }
+
+    &:hover {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.08);
+      border-left-color: #667eea;
+      padding-left: 44px;
+      transform: translateX(4px);
+
+      @media (max-width: 768px) {
+        padding-left: 40px;
+        transform: translateX(3px);
+      }
+
+      @media (max-width: 480px) {
+        padding-left: 36px;
+        transform: translateX(2px);
+      }
+
+      &::before {
+        transform: scale(1.4) rotate(10deg);
+        filter: grayscale(0);
+        text-shadow: 0 0 12px rgba(102, 126, 234, 0.6);
+
+        @media (max-width: 768px) {
+          transform: scale(1.3) rotate(8deg);
+        }
+      }
+    }
+  }
 }
 
-.highlights li {
-  padding: 10px 0 10px 28px;
-  position: relative;
-  color: #2d3748;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  transition: all 0.3s ease;
-}
-
-.highlights li::before {
-  content: '✨';
-  position: absolute;
-  left: 0;
-  font-size: 16px;
-  transition: transform 0.3s ease;
-}
-
-.highlights li:hover {
-  color: #667eea;
-  padding-left: 32px;
-}
-
-.highlights li:hover::before {
-  transform: scale(1.3);
-}
+// ============================================
+// NO PROJECTS STATE - Enhanced Design
+// ============================================
 
 .no-projects {
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
   color: white;
-  animation: fadeIn 0.8s ease;
-}
+  animation: fadeIn 1s ease;
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 
-.no-projects mat-icon {
-  font-size: 80px;
-  width: 80px;
-  height: 80px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 24px;
-}
-
-.no-projects p {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  @media (max-width: 768px) {
+    padding: 80px 20px;
   }
 
-  .projects-header h1 {
-    font-size: 2.2rem;
-  }
-
-  .project-image {
-    height: 200px;
-  }
-}
-
-@media (max-width: 480px) {
-  .projects-container {
+  @media (max-width: 480px) {
     padding: 60px 16px;
+    border-radius: 20px;
   }
 
-  .projects-header h1 {
-    font-size: 1.8rem;
+  mat-icon {
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 28px;
+    animation: float-icon 3s ease-in-out infinite;
+
+    @media (max-width: 768px) {
+      font-size: 80px;
+      width: 80px;
+      height: 80px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 64px;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 20px;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    line-height: 1.6;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+@keyframes float-icon {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ============================================
+// RESPONSIVE FINE-TUNING
+// ============================================
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .overlay-buttons {
+    flex-direction: column;
+    align-items: stretch;
+
+    a {
+      width: 100%;
+      justify-content: center;
+    }
   }
 }
