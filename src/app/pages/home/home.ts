@@ -73,10 +73,10 @@ export class Home implements OnInit, OnDestroy {
       // Typing or deleting
       if (this.isDeleting) {
         this.typedText = currentRole.substring(0, this.typedText.length - 1);
-        this.typingSpeed = 50;
+        this.typingSpeed = 30;
       } else {
         this.typedText = currentRole.substring(0, this.typedText.length + 1);
-        this.typingSpeed = 100;
+        this.typingSpeed = 80;
       }
     }
 
