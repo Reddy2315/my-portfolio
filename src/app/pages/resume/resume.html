@@ -1,79 +1,206 @@
 <div class="resume-container">
+  <!-- Animated Background Particles -->
+  <div class="particle-bg">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+  </div>
+
   <div class="header-row">
-    <h1>Professional Resume</h1>
-    <a class="download-btn" mat-raised-button color="primary" href="assets/resume.pdf" target="_blank" rel="noopener" download>
+    <div class="title-wrapper">
+      <h1>Professional Resume</h1>
+      <p class="subtitle">My Journey & Achievements</p>
+    </div>
+    <a
+      class="download-btn"
+      mat-raised-button
+      color="primary"
+      href="assets/resume.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      download
+      aria-label="Download Resume PDF"
+    >
       <mat-icon>download</mat-icon>
-      Download Resume (PDF)
+      <span>Download Resume (PDF)</span>
+      <span class="btn-shine"></span>
     </a>
   </div>
 
+  <!-- Experience Section with Timeline -->
   <section class="section">
-    <h2><mat-icon>work</mat-icon> Work Experience</h2>
+    <div class="section-header">
+      <h2>
+        <mat-icon>work</mat-icon>
+        <span>Work Experience</span>
+      </h2>
+      <div class="section-badge">
+        {{ experience.length }} Position<span *ngIf="experience.length !== 1"
+          >s</span
+        >
+      </div>
+    </div>
 
     <ng-container *ngIf="experience.length; else noExperience">
-      <mat-card *ngFor="let exp of experience" class="exp-card">
-        <mat-card-header>
-          <mat-card-title>{{ exp.position }}</mat-card-title>
-          <mat-card-subtitle>{{ exp.company }} • {{ exp.location }}</mat-card-subtitle>
-        </mat-card-header>
+      <div class="timeline-container">
+        <!-- Vertical Timeline Line -->
+        <div class="timeline-line"></div>
 
-        <mat-card-content>
-          <div class="meta">
-            <mat-icon class="icon">access_time</mat-icon>
-            <span>{{ exp.duration }}</span>
+        <div
+          class="timeline-item"
+          *ngFor="let exp of experience; let i = index"
+          [class.animate-in]="true"
+          [style.animation-delay.ms]="i * 100"
+        >
+          <!-- Timeline Dot -->
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+            <div class="dot-pulse"></div>
           </div>
 
-          <h4>Key Responsibilities</h4>
-          <ul>
-            <li *ngFor="let resp of exp.responsibilities">{{ resp }}</li>
-          </ul>
+          <mat-card class="exp-card">
+            <!-- Card Shine Effect -->
+            <div class="card-shine"></div>
 
-          <h4>Technologies Used</h4>
-          <p>{{ exp.technologies.join(', ') }}</p>
-        </mat-card-content>
-      </mat-card>
+            <mat-card-header>
+              <div class="header-content">
+                <mat-card-title>{{ exp.position }}</mat-card-title>
+                <mat-card-subtitle>
+                  <mat-icon class="company-icon">business</mat-icon>
+                  {{ exp.company }} • {{ exp.location }}
+                </mat-card-subtitle>
+              </div>
+              <div class="experience-badge">
+                <mat-icon>stars</mat-icon>
+              </div>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div class="meta">
+                <mat-icon class="icon">access_time</mat-icon>
+                <span>{{ exp.duration }}</span>
+              </div>
+
+              <div class="content-section">
+                <h4><mat-icon>task_alt</mat-icon> Key Responsibilities</h4>
+                <ul class="fancy-list">
+                  <li *ngFor="let resp of exp.responsibilities">
+                    <span class="list-icon">●</span>
+                    <span class="list-text">{{ resp }}</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="content-section tech-section">
+                <h4><mat-icon>code</mat-icon> Technologies Used</h4>
+                <div class="tech-tags">
+                  <span class="tech-tag" *ngFor="let tech of exp.technologies">
+                    <mat-icon class="tech-icon">check_circle</mat-icon>
+                    {{ tech }}
+                  </span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </ng-container>
 
     <ng-template #noExperience>
-      <p>No work experience available.</p>
+      <div class="empty-state">
+        <mat-icon>work_off</mat-icon>
+        <p>No work experience available.</p>
+      </div>
     </ng-template>
   </section>
 
-  <mat-divider class="section-divider"></mat-divider>
+  <mat-divider class="section-divider">
+    <span class="divider-text">Education Journey</span>
+  </mat-divider>
 
+  <!-- Education Section with Timeline -->
   <section class="section">
-    <h2><mat-icon>school</mat-icon> Education</h2>
+    <div class="section-header">
+      <h2>
+        <mat-icon>school</mat-icon>
+        <span>Education</span>
+      </h2>
+      <div class="section-badge">
+        {{ education.length }} Degree<span *ngIf="education.length !== 1"
+          >s</span
+        >
+      </div>
+    </div>
 
     <ng-container *ngIf="education.length; else noEducation">
-      <mat-card *ngFor="let edu of education" class="edu-card">
-        <mat-card-header>
-          <mat-card-title>{{ edu.degree }}</mat-card-title>
-          <mat-card-subtitle>{{ edu.institution }}</mat-card-subtitle>
-        </mat-card-header>
+      <div class="timeline-container">
+        <!-- Vertical Timeline Line -->
+        <div class="timeline-line"></div>
 
-        <mat-card-content>
-          <div class="meta">
-            <mat-icon class="icon">calendar_today</mat-icon>
-            <span>{{ edu.duration }}</span>
+        <div
+          class="timeline-item"
+          *ngFor="let edu of education; let i = index"
+          [class.animate-in]="true"
+          [style.animation-delay.ms]="i * 100"
+        >
+          <!-- Timeline Dot -->
+          <div class="timeline-dot education-dot">
+            <div class="dot-inner"></div>
+            <div class="dot-pulse"></div>
           </div>
 
-          <div class="meta" *ngIf="edu.grade">
-            <mat-icon class="icon">grade</mat-icon>
-            <span>Grade: {{ edu.grade }}</span>
-          </div>
+          <mat-card class="edu-card">
+            <!-- Card Shine Effect -->
+            <div class="card-shine"></div>
 
-          <div *ngIf="edu.achievements?.length">
-            <h4>Achievements</h4>
-            <ul>
-              <li *ngFor="let achievement of edu.achievements">{{ achievement }}</li>
-            </ul>
-          </div>
-        </mat-card-content>
-      </mat-card>
+            <mat-card-header>
+              <div class="header-content">
+                <mat-card-title>{{ edu.degree }}</mat-card-title>
+                <mat-card-subtitle>
+                  <mat-icon class="company-icon">account_balance</mat-icon>
+                  {{ edu.institution }}
+                </mat-card-subtitle>
+              </div>
+              <div class="education-badge">
+                <mat-icon>school</mat-icon>
+              </div>
+            </mat-card-header>
+
+            <mat-card-content>
+              <div class="meta-row">
+                <div class="meta">
+                  <mat-icon class="icon">calendar_today</mat-icon>
+                  <span>{{ edu.duration }}</span>
+                </div>
+
+                <div class="meta grade-meta" *ngIf="edu.grade">
+                  <mat-icon class="icon">grade</mat-icon>
+                  <span class="grade-value">{{ edu.grade }}</span>
+                </div>
+              </div>
+
+              <div class="content-section" *ngIf="edu.achievements?.length">
+                <h4><mat-icon>emoji_events</mat-icon> Achievements</h4>
+                <ul class="fancy-list achievements-list">
+                  <li *ngFor="let achievement of edu.achievements">
+                    <span class="list-icon">★</span>
+                    <span class="list-text">{{ achievement }}</span>
+                  </li>
+                </ul>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </ng-container>
 
     <ng-template #noEducation>
-      <p>No education data available.</p>
+      <div class="empty-state">
+        <mat-icon>school_off</mat-icon>
+        <p>No education data available.</p>
+      </div>
     </ng-template>
   </section>
 </div>
